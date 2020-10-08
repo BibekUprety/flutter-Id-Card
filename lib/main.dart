@@ -5,7 +5,16 @@ void main() => runApp(MaterialApp(
       home: BibekCard(),
     ));
 
-class BibekCard extends StatelessWidget {
+class BibekCard extends StatefulWidget {
+  @override
+  _BibekCardState createState() => _BibekCardState();
+}
+
+class _BibekCardState extends State<BibekCard> {
+
+  int bibekLevel= 0;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +24,15 @@ class BibekCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            bibekLevel+=1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
@@ -59,7 +77,7 @@ class BibekCard extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              "8",
+              "$bibekLevel",
               style: TextStyle(
                   letterSpacing: 2,
                   color: Colors.amberAccent[200],
